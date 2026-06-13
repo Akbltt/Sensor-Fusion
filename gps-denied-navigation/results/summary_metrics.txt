@@ -1,0 +1,37 @@
+================================================================================
+GPS-DENIED NAVIGATION: PERFORMANCE SUMMARY
+================================================================================
+
+Configuration:
+  Total Time: 140.0 s
+  GPS Outage: [30.0, 50.0) s (duration: 20.0 s)
+  GPS Sigma: 2.50 m
+  IMU Sigma (accel): 0.120 m/s^2
+  IMU Sigma (yaw): 0.600 deg/s
+
+Phase-Based Position RMSE [m]:
+  Before Outage (0 - 30.0 s):
+    IMU Dead Reckoning: 5.629 m
+    EKF Solution:       1.919 m
+
+  During Outage (30.0 - 50.0 s):
+    IMU Dead Reckoning: 25.313 m
+    EKF Solution:           EKF Advantage:      64.7%
+
+  After Outage (50.0 - 140.0 s):
+    IMU Dead Reckoning: 169.117 m
+    EKF Solution:       1.795 m
+
+Overall Statistics:
+  Max Position Error (DR):  298.775 m
+  Max Position Error (EKF): 15.981 m
+  Mean Position Error (DR):  100.904 m
+  Mean Position Error (EKF): 2.493 m
+
+================================================================================
+Key Observations:
+  - EKF prediction-only mode during outage limits but does not eliminate error growth
+  - Upon GPS recovery, EKF quickly re-acquires lock through Kalman correction
+  - IMU bias/drift effects dominate during long outages
+  - Filter covariance is valuable for uncertainty tracking and decision-making
+================================================================================
